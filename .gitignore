@@ -32,5 +32,8 @@ local.properties
 #
 node_modules/
 npm-debug.log
-elm-stuff/
+# elm-package generated files
 elm.js
+elm-stuff/
+# elm-repl generated files
+repl-temp-*

@@ -3,6 +3,7 @@ module Main (..) where
 import Signal
 import NativeUi as Ui
 import NativeUi.Elements as E
+import NativeUi.Handlers as H
 import NativeUi.NativeApp as NativeApp
 import NativeUi.Style as Style exposing (defaultTransform)
 
@@ -29,7 +30,7 @@ model =
 view : Signal.Address Action -> Model -> Ui.NativeUi
 view address count =
   E.view
-    [ Ui.style [ Style.alignItems "center" ]
+    [ Ui.style [ Style.alignItems Style.AlignCenter ]
     ]
     [ E.image
         [ Ui.style
@@ -42,7 +43,7 @@ view address count =
         []
     , E.text
         [ Ui.style
-            [ Style.textAlign "center"
+            [ Style.textAlign Style.TextAlignCenter
             , Style.marginBottom 30
             ]
         ]
@@ -51,8 +52,8 @@ view address count =
     , E.view
         [ Ui.style
             [ Style.width 80
-            , Style.flexDirection "row"
-            , Style.justifyContent "space-between"
+            , Style.flexDirection Style.Row
+            , Style.justifyContent Style.SpaceBetween
             ]
         ]
         [ button address Decrement "#d33" "-"
@@ -81,18 +82,18 @@ button address action color content =
   E.text
     [ Ui.style
         [ Style.color "white"
-        , Style.textAlign "center"
+        , Style.textAlign Style.TextAlignCenter
         , Style.backgroundColor color
         , Style.paddingTop 5
         , Style.paddingBottom 5
         , Style.width 30
-        , Style.fontWeight "bold"
+        , Style.fontWeight Style.FontWeightBold
         , Style.shadowColor "#000"
         , Style.shadowOpacity 0.25
         , Style.shadowOffset 1 1
         , Style.shadowRadius 5
         , Style.transform { defaultTransform | rotate = Just "10deg" }
         ]
-    , Ui.onPress address action
+    , H.onPress address action
     ]
     [ Ui.string content ]

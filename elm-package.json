@@ -1,0 +1,15 @@
+{
+    "source-directories": [
+        "."
+    ], 
+    "repository": "https://github.com/user/project.git", 
+    "license": "BSD3", 
+    "exposed-modules": [], 
+    "version": "1.0.0", 
+    "elm-version": "0.16.0 <= v < 0.17.0", 
+    "dependencies": {
+        "elm-lang/core": "3.0.1 <= v <= 3.0.1", 
+        "elm-native-ui/elm-native-ui": "1.0.0 <= v <= 1.0.0"
+    }, 
+    "summary": "helpful summary of your project, less than 80 characters"
+}

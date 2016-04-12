@@ -30,7 +30,7 @@ model =
 view : Signal.Address Action -> Model -> Ui.NativeUi
 view address count =
   E.view
-    [ Ui.style [ Style.alignItems Style.AlignCenter ]
+    [ Ui.style [ Style.alignItems Style.AlignStretch ]
     ]
     [ E.image
         [ Ui.style

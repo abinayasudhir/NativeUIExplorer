@@ -6,20 +6,64 @@ import NativeUi.Style exposing (..)
 import NativeUi.Properties as NP exposing (..)
 
 
-boxShadowView : List NativeUi
+type Platform
+  = All
+  | Ios
+  | Android
+
+
+type alias Example =
+  { title : String
+  , description : String
+  , elements : List NativeUi
+  , platform : Platform
+  }
+
+
+example : Example
+example =
+  { title = ""
+  , description = ""
+  , elements = []
+  , platform = All
+  }
+
+
+boxShadowView : List Example
 boxShadowView =
-  [ string "Basic shadow"
-  , view [ style (box ++ shadow1) ] []
-  , string "Colored shadow"
-  , view [ style (box ++ shadow2) ] []
-  , string "Shaped shadow"
-  , view [ style (box ++ shadow1 ++ [ borderRadius 50 ]) ] []
-  , string "Image shadow"
-  , image [ style (box ++ shadow1 ++ imageShadow), NP.source (Uri "./hawk.png") ] []
-  , string "Child Shadow"
-  , view
-      [ style (box ++ shadow1 ++ [ backgroundColor "transparent" ]) ]
-      [ view [ style (box ++ childShadow) ] [] ]
+  [ { example
+      | title = "Basic shadow"
+      , description = "shadowOpacity: 0.5, shadowOffset: {2, 2}"
+      , elements =
+          [ view [ style (box ++ shadow1) ] [] ]
+    }
+  , { example
+      | title = "Colored shadow"
+      , description = "shadowColor: 'red', shadowRadius: 0"
+      , elements =
+          [ view [ style (box ++ shadow2) ] [] ]
+    }
+  , { example
+      | title = "Shaped shadow"
+      , description = "borderRadius: 50"
+      , elements =
+          [ view [ style (box ++ shadow1 ++ [ borderRadius 50 ]) ] [] ]
+    }
+  , { example
+      | title = "Image shadow"
+      , description = "Image shadows are derived exactly from the pixels."
+      , elements =
+          [ image [ style (box ++ shadow1 ++ imageShadow), NP.source (Uri "./hawk.png") ] [] ]
+    }
+  , { example
+      | title = "Child Shadow"
+      , description = "For views without an opaque background color, shadow will be derived from the subviews."
+      , elements =
+          [ view
+              [ style (box ++ shadow1 ++ [ backgroundColor "transparent" ]) ]
+              [ view [ style (box ++ childShadow) ] [] ]
+          ]
+    }
   ]
 
 

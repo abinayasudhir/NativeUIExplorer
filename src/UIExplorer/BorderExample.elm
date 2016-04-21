@@ -5,32 +5,103 @@ import NativeUi exposing (NativeUi, node, Property, string, style)
 import NativeUi.Elements exposing (..)
 
 
-borderView : List NativeUi
+type Platform
+  = All
+  | Ios
+  | Android
+
+
+type alias Example =
+  { title : String
+  , description : String
+  , elements : List NativeUi
+  , platform : Platform
+  }
+
+
+example : Example
+example =
+  { title = ""
+  , description = ""
+  , elements = []
+  , platform = All
+  }
+
+
+borderView : List Example
 borderView =
-  [ string "Equal-Width / Same-Color"
-  , view [ style (box ++ border1) ] []
-  , string "Equal-Width / Same-Color"
-  , view [ style (box ++ borderRadiusStyle) ] []
-  , string "Equal-Width Borders"
-  , view [ style (box ++ border2) ] []
-  , string "Same-Color Borders"
-  , view [ style (box ++ border3) ] []
-  , string "Custom Borders"
-  , view [ style (box ++ border4) ] []
-  , string "Custom Borders"
-  , view [ style (box ++ border5) ] []
-  , string "Custom Borders"
-  , view [ style (box ++ border6) ] []
-  , string "Custom Borders"
-  , view [ style (box ++ border7) ] [ view [ style border7_inner ] [] ]
-  , string "Single Borders"
-  , singleBorder
-  , string "Corner Radii"
-  , view [ style (box ++ border9) ] []
-  , string "Corner Radii / Elevation"
-  , view [ style (box ++ border10) ] []
-  , string "CSS Trick - Triangle"
-  , view [ style border11 ] []
+  [ { example
+      | title = "Equal-Width / Same-Color"
+      , description = "borderWidth & borderColor"
+      , elements =
+          [ view [ style (box ++ border1) ] [] ]
+    }
+  , { example
+      | title = "Equal-Width / Same-Color"
+      , description = "borderWidth & borderColor & borderRadius"
+      , elements =
+          [ view [ style (box ++ borderRadiusStyle) ] [] ]
+    }
+  , { example
+      | title = "Equal-Width Borders"
+      , description = "borderWidth & border*Color"
+      , elements =
+          [ view [ style (box ++ border2) ] [] ]
+    }
+  , { example
+      | title = "Same-Color Borders"
+      , description = "border*Width & borderColor"
+      , elements =
+          [ view [ style (box ++ border3) ] [] ]
+    }
+  , { example
+      | title = "Custom Borders"
+      , description = "border*Width & border*Color"
+      , elements =
+          [ view [ style (box ++ border4) ] [] ]
+    }
+  , { example
+      | title = "Custom Borders"
+      , description = "border*Width & border*Color"
+      , elements =
+          [ view [ style (box ++ border5) ] [] ]
+    }
+  , { example
+      | title = "Custom Borders"
+      , description = "border*Width & border*Color"
+      , elements =
+          [ view [ style (box ++ border6) ] [] ]
+    }
+  , { example
+      | title = "Custom Borders"
+      , description = "borderRadius & clipping"
+      , elements =
+          [ view [ style (box ++ border7) ] [ view [ style border7_inner ] [] ] ]
+    }
+  , { example
+      | title = "Single Borders"
+      , description = "top, left, bottom right"
+      , elements =
+          [ singleBorder ]
+    }
+  , { example
+      | title = "Corner Radii"
+      , description = "borderTopLeftRadius & borderBottomRightRadius"
+      , elements =
+          [ view [ style (box ++ border9) ] [] ]
+    }
+  , { example
+      | title = "Corner Radii / Elevation"
+      , description = "borderTopLeftRadius & borderBottomRightRadius & elevation"
+      , elements =
+          [ view [ style (box ++ border10) ] [] ]
+    }
+  , { example
+      | title = "CSS Trick - Triangle"
+      , description = "create a triangle by manipulating border colors and widths"
+      , elements =
+          [ view [ style border11 ] [] ]
+    }
   ]
 
 
